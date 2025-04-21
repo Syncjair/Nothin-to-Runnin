@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 </head>
 <body>
     <header>
@@ -50,24 +51,34 @@
     <section id="inschrijven" class="inschrijven">
         <div class="container">
             <h2>Inschrijfformulier</h2>
-            <form id="registrationForm">
+            <form id="registrationForm" action="{{ route('inschrijven.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
                 <div class="form-section">
                     <h3>1. Persoonlijke gegevens</h3>
                     <div class="form-group">
-                        <label for="fullName">Volledige naam</label>
-                        <input type="text" id="fullName" name="fullName" required>
+                        <label for="name">Volledige naam</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="birthDate">Geboortedatum</label>
-                        <input type="date" id="birthDate" name="birthDate" required>
+                        <label for="date_of_birth">Geboortedatum</label>
+                        <input type="date" id="date_of_birth" name="date_of_birth" required>
                     </div>
                     <div class="form-group">
-                        <label for="city">Woonplaats</label>
-                        <input type="text" id="city" name="city" required>
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="man">Man</option>
+                            <option value="vrouw">Vrouw</option>
+                            <option value="anders">Anders</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Telefoonnummer</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <label for="residence">Woonplaats</label>
+                        <input type="text" id="residence" name="residence" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phonenumber">Telefoonnummer</label>
+                        <input type="tel" id="phonenumber" name="phonenumber" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mailadres</label>
@@ -80,16 +91,16 @@
                 <div class="form-section">
                     <h3>2. Noodgevallen / Contactpersoon</h3>
                     <div class="form-group">
-                        <label for="emergencyName">Naam noodcontact</label>
-                        <input type="text" id="emergencyName" name="emergencyName" required>
+                        <label for="emergency_contact_name">Naam noodcontact</label>
+                        <input type="text" id="emergency_contact_name" name="emergency_contact_name" required>
                     </div>
                     <div class="form-group">
-                        <label for="emergencyPhone">Telefoonnummer noodcontact</label>
-                        <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                        <label for="emergency_contact_phone">Telefoonnummer noodcontact</label>
+                        <input type="tel" id="emergency_contact_phone" name="emergency_contact_phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="relationship">Relatie tot lid</label>
-                        <input type="text" id="relationship" name="relationship" placeholder="partner, ouder, vriend etc." required>
+                        <label for="emergency_contact_relation">Relatie tot lid</label>
+                        <input type="text" id="emergency_contact_relation" name="emergency_contact_relation" placeholder="partner, ouder, vriend etc." required>
                     </div>
                 </div>
 
@@ -99,12 +110,12 @@
                     <h3>3. Medische informatie</h3>
                     <p class="form-note">(optioneel, maar belangrijk voor de veiligheid tijdens trainingen)</p>
                     <div class="form-group">
-                        <label for="medicalConditions">Heb je medische aandoeningen waar wij rekening mee moeten houden?</label>
-                        <textarea id="medicalConditions" name="medicalConditions" placeholder="bijv. astma, hartklachten, epilepsie"></textarea>
+                        <label for="medical_conditions">Heb je medische aandoeningen waar wij rekening mee moeten houden?</label>
+                        <textarea id="medical_conditions" name="medical_conditions" placeholder="bijv. astma, hartklachten, epilepsie"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="medications">Gebruik je medicatie tijdens het sporten?</label>
-                        <textarea id="medications" name="medications"></textarea>
+                        <label for="medication_during_sports">Gebruik je medicatie tijdens het sporten?</label>
+                        <textarea id="medication_during_sports" name="medication_during_sports"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="allergies">Allergieën</label>
@@ -117,8 +128,8 @@
                 <div class="form-section">
                     <h3>4. Sportachtergrond</h3>
                     <div class="form-group">
-                        <label for="experience">Loopervaring</label>
-                        <select id="experience" name="experience" required>
+                        <label for="running_level">Loopervaring</label>
+                        <select id="running_level" name="running_level" required>
                             <option value="">Selecteer je ervaring</option>
                             <option value="beginner">Beginner</option>
                             <option value="gevorderd">Gevorderd</option>
@@ -126,12 +137,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="averageDistance">Gemiddelde afstand of tempo (optioneel)</label>
-                        <input type="text" id="averageDistance" name="averageDistance">
+                        <label for="running_experience_km">Gemiddelde afstand of tempo (optioneel)</label>
+                        <input type="text" id="running_experience_km" name="running_experience_km">
                     </div>
                     <div class="form-group">
-                        <label for="injuries">Eerdere blessures (optioneel)</label>
-                        <textarea id="injuries" name="injuries"></textarea>
+                        <label for="previous_injuries">Eerdere blessures (optioneel)</label>
+                        <textarea id="previous_injuries" name="previous_injuries"></textarea>
                     </div>
                 </div>
 
@@ -140,16 +151,16 @@
                 <div class="form-section">
                     <h3>5. Toestemmingen / Akkoordverklaringen</h3>
                     <div class="form-group checkbox">
-                        <input type="checkbox" id="privacyAgree" name="privacyAgree" required>
-                        <label for="privacyAgree">Akkoord met de <a href="{{ route('privacy') }}" target="_blank">privacyverklaring (AVG)</a></label>
+                        <input type="checkbox" id="privacy_agree" name="privacy_agree" value="1" required>
+                        <label for="privacy_agree">Akkoord met de <a href="{{ route('privacy') }}" target="_blank">privacyverklaring (AVG)</a></label>
                     </div>
                     <div class="form-group checkbox">
-                        <input type="checkbox" id="photoAgree" name="photoAgree" required>
-                        <label for="photoAgree">Toestemming voor gebruik van foto's / video's voor website of social media</label>
+                        <input type="checkbox" id="photo_agree" name="photo_agree" value="1" required>
+                        <label for="photo_agree">Toestemming voor gebruik van foto's / video's voor website of social media</label>
                     </div>
                     <div class="form-group checkbox">
-                        <input type="checkbox" id="termsAgree" name="termsAgree" required>
-                        <label for="termsAgree">Akkoord met de <a href="{{ route('voorwaarden') }}" target="_blank">algemene voorwaarden en clubregels</a></label>
+                        <input type="checkbox" id="terms_agree" name="terms_agree" value="1" required>
+                        <label for="terms_agree">Akkoord met de <a href="{{ route('voorwaarden') }}" target="_blank">algemene voorwaarden en clubregels</a></label>
                     </div>
                 </div>
 
@@ -159,13 +170,13 @@
                     <h3>6. Handtekening</h3>
                     <div class="form-group">
                         <label for="signature">Handtekening lid</label>
-                        <div class="signature-pad">
-                            <p>Handtekening hier plaatsen</p>
-                        </div>
+                        <input type="text" id="signature" name="signature" required 
+                            class="signature-input" placeholder="Typ je naam als handtekening">
+                        <small class="form-text text-muted">Typ je volledige naam als digitale handtekening</small>
                     </div>
                     <div class="form-group">
-                        <label for="signDate">Datum van inschrijving</label>
-                        <input type="date" id="signDate" name="signDate" required>
+                        <label for="registration_date">Datum van inschrijving</label>
+                        <input type="date" id="registration_date" name="registration_date" required>
                     </div>
                 </div>
 
@@ -211,5 +222,6 @@
             </div>
         </div>
     </footer>
+    
 </body>
 </html>
