@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DocumentController;
 
-Route::get('/', function () {
-    return view('indexview.index');
-});
+Route::get('/', function () { return view('registreren.index'); })->name('home');
+Route::get('/privacyverklaring', [DocumentController::class, 'showPrivacy'])->name('privacy');
+Route::get('/algemene-voorwaarden', [DocumentController::class, 'showTerms'])->name('voorwaarden');
