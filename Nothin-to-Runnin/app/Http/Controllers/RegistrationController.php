@@ -28,11 +28,10 @@ class RegistrationController extends Controller
             'privacy_agree' => 'required|accepted',
             'photo_agree' => 'required|accepted',
             'terms_agree' => 'required|accepted',
-            'signature' => 'nullable|string',
+            'signature' => 'required|string',
             'registration_date' => 'required|date',
         ]);
 
-        // Controleer of de database tabel 'registrations' heet of 'inschrijvingen'
         $registration = Registration::create([
             'name' => $validatedData['name'],
             'date_of_birth' => $validatedData['date_of_birth'],
@@ -56,7 +55,6 @@ class RegistrationController extends Controller
             'registration_date' => $validatedData['registration_date'],
         ]);
         
-        // Zorg voor duidelijke foutmeldingen bij problemen
         if (!$registration) {
             return back()->withInput()->withErrors(['error' => 'Er is iets misgegaan met je registratie. Probeer het opnieuw.']);
         }

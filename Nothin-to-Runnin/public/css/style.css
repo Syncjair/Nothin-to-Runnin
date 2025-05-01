@@ -186,6 +186,18 @@ nav {
     padding-top: 7rem;
 }
 
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
 .form-section {
     background-color: white;
     padding: 2rem;

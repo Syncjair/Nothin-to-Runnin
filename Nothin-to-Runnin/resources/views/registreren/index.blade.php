@@ -19,7 +19,7 @@
                     <li><a href="#welkom">Welkom</a></li>
                     <li><a href="#inschrijven">Inschrijven</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="">Login</a></li>
+                    <li><a href="{{ route('login')}}">Login</a></li>
                 </ul>
             </nav>
         </div>
@@ -42,6 +42,8 @@
                 
                 <p class="slogan">Word fit, verbind, en maak impact.<br>
                 Samen rennen we voor meer dan alleen de finishlijn!</p>
+
+                <a href="{{ asset('img/nothin2runnin.jpg') }}" target="_blank" class="btn">Bekijk hier de flyer</a>
                 
                 <a href="#inschrijven" class="btn">Inschrijven</a>
             </div>
@@ -51,6 +53,17 @@
     <section id="inschrijven" class="inschrijven">
         <div class="container">
             <h2>Inschrijfformulier</h2>
+
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            
             <form id="registrationForm" action="{{ route('inschrijven.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
