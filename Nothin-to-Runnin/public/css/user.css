@@ -1,0 +1,182 @@
+/* Gebruikers Tabel Styling */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.users-table th {
+    background-color: #f8f8f8;
+    color: #333;
+    font-weight: 600;
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Dit zorgt ervoor dat de "Acties" header gecentreerd is */
+.users-table th:last-child {
+    text-align: center;
+}
+
+.users-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.users-table tr:last-child td {
+    border-bottom: none;
+}
+
+.users-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Actie Knoppen */
+td.actions {
+    text-align: center; /* Dit centreert de inhoud van de cel */
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center; /* Dit centreert de knoppen */
+}
+
+.btn-edit, 
+.btn-delete {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    min-width: 100px;
+    text-align: center;
+}
+
+.btn-edit {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #2980b9;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+.password-badge {
+    display: inline-block;
+    background-color: #eee;
+    color: #666;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Alert meldingen */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+/* Header styling */
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    color: #ff6347;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #ff6347;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: inherit;
+    padding: 0;
+}
+
+.logout-button:hover {
+    color: #ff6347;
+}
+
+/* Pagina titel */
+h1 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 700;
+    border-bottom: 3px solid #ff6347;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .btn-edit, .btn-delete {
+        width: 100%;
+    }
+    
+    .users-table th, .users-table td {
+        padding: 10px;
+    }
+}
