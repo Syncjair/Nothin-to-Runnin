@@ -14,12 +14,13 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Nothin2Runnin</div>
+                <div class="logo">NOTHIN2RUNNIN</div>
                 <ul class="nav-links">
                     <li><a href="#welkom">Welkom</a></li>
                     <li><a href="#inschrijven">Inschrijven</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="{{ route('login')}}">Login</a></li>
+                    <li><a href="#" id="languageToggle" class="lang-btn">EN</a></li>
                 </ul>
             </nav>
         </div>
@@ -27,7 +28,7 @@
 
     <section id="welkom" class="welkom">
         <div class="container">
-            <h1>Welkom bij Nothin2Runnin!</h1>
+            <h1>Welkom bij NOTHIN2RUNNIN!</h1>
             <div class="welcome-content">
                 <p>Sluit je aan bij onze hardloop lifestyle en zet samen met ons de benen in voor het goede doel! Bij Nothin2Runnin combineren we sportiviteit met solidariteit: we halen geld op en creëren aandacht voor Nothin2Rockin Stichting door samen marathons en hardloopuitdagingen aan te gaan.</p>
                 <p>Iedere week organiseren we 2 trainingssessies — geschikt voor zowel beginners als gevorderde lopers. Of je nu traint voor een afstand van 2,5 km, 5 km, 10 km of zelfs 21 km: er is altijd een plek voor jou in ons team!</p>
@@ -42,8 +43,6 @@
                 
                 <p class="slogan">Word fit, verbind, en maak impact.<br>
                 Samen rennen we voor meer dan alleen de finishlijn!</p>
-
-                <a href="{{ asset('img/nothin2runnin.jpg') }}" target="_blank" class="btn">Bekijk hier de flyer</a>
                 
                 <a href="#inschrijven" class="btn">Inschrijven</a>
             </div>
@@ -76,6 +75,7 @@
                     <div class="form-group">
                         <label for="date_of_birth">Geboortedatum</label>
                         <input type="date" id="date_of_birth" name="date_of_birth" required>
+                        <span id="age_error" class="error-message" style="display: none; color: red; font-size: 14px;">Je moet 18 jaar of ouder zijn om je te registreren.</span>
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>
@@ -232,9 +232,14 @@
             </div>
             <div class="footer-copyright">
                 <p>&copy; 2025 Nothin2Runnin. Alle rechten voorbehouden.</p>
+                <p>&copy; Jaïr Maduro</p>
             </div>
         </div>
     </footer>
-    
+
+    <div id="google_translate_element" style="display: none;"></div>
+
+    <script src="{{ asset('js/translate.js') }}"></script>
+    <script src="{{ asset('js/birthday.js') }}"></script>
 </body>
 </html>
