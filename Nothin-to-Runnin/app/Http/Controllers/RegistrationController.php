@@ -11,7 +11,7 @@ class RegistrationController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => 'required|date|before_or_equal:' . \Carbon\Carbon::now()->subYears(18)->format('Y-m-d'),
             'gender' => 'required|string|in:man,vrouw,anders',
             'residence' => 'required|string|max:255',
             'phonenumber' => 'required|string|max:20',
